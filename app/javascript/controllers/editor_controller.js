@@ -19,12 +19,8 @@ export default class extends Controller {
       holder: this.article_contentTarget,
       data: initialContent,
       tools: { // list additional plugins here
-        header: {
-          class: Header,
-        },
-        list: {
-          class: List,
-        },
+        header: Header,
+        list: List,
         paragraph: {
           class: Paragraph,
           config: {
