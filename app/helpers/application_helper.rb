@@ -5,6 +5,16 @@ module ApplicationHelper
       case block["type"]
       when "paragraph"
         "<p>#{block['data']['text']}</p>"
+      when "header"
+        "<h#{block['data']['level']}>#{block['data']['text']}</h#{block['data']['level']}>"
+      when "list"
+        list_items = block['data']['items'].map do |item|
+          "<li>#{item}</li>"
+        end.join
+        "<ul>#{list_items}</ul>"
+      when "code"
+        escaped_code = CGI.escapeHTML(block['data']['code']) # this is to escape html code from editorJS
+        "<pre><code>#{escaped_code}</code></pre>"
       else
         ""
       end
